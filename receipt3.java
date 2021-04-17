@@ -1,4 +1,4 @@
-package practice;
+
 
 import java.text.DecimalFormat;
 import java.text.MessageFormat;
@@ -22,9 +22,9 @@ public class receipt3 {
 								2500, 3000, 3500, 4000, 1000, 1300, 1800, 2300, 2800, 1900,																				
 								3300, 1000, 1300, 2300, 2500, 3000, 2700, 1400, 1500, 1000}; 
 		int [] K15_num =  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1,  1, 2, 1, 1, 1, 1, 1};  												//각 과자의 수량을 배열에 넣음
-		boolean [] K15_taxfree = {true, false, false, false, true, true, false, true, false, false,																//면제유무에 대해 배열에 넣어 true이면 면세
-													false, false, false, false, true, false, true, false, false, true,
-													false, false, false, false, true, false, false, false, false, true}; 
+		boolean [] K15_taxfree = {false, false, false, false, true, false, false, false, false, false,																//면제유무에 대해 배열에 넣어 true이면 면세
+													false, false, false, false, true, false, false, false, false, false,
+													false, false, false, false, true, false, false, false, false, false}; 
 		int K15_total_num = 0;																																									//과자의 총수량을 저장할 변수
 		for (int i = 0; i < K15_num.length; i++) {																																		//수량배열의 길이까지 반복문을 넣음
 			K15_total_num = K15_total_num + K15_num[i];																														//과자의 총 수량을 연산해 저장
@@ -84,11 +84,12 @@ public class receipt3 {
 						System.out.printf("%11s %15s %13s  %15s\n",																												//각 배열의 해당품목과 
 								K15_itemname[i],df.format(K15_price[i]), K15_num[i],df.format(K15_price[i] * K15_num[i]));						//단가와 수량, 금액을 천단위 콤마찍어 출력
 					}
+			}
 			if ((i + 1) % 5 ==0) {																														//5줄마다 줄을 출력하기 위해 0부터 시작하는 i에 5를 더해
 				System.out.println("-------------------------------------------------------------");									//0으로 나누어떨어지면 줄을 출력
 			}
 		}
-		}
+		
 		System.out.println();																														//줄띄움을 위해 출력
 		System.out.printf("%33s %27s\n", "총 품목 수량", df.format(K15_total_num));							//총 수량을 천단위로 콤마찍어 출력				
 		System.out.printf(" %33s %24s\n", "(*)면 세  물  품", df.format(K15_sum_notax));						//면세물품을 천단위로 콤마찍어 출력
